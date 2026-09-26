@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dashboard | HomeAssist</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">HA</div>
+          <div>
+            <h1>HomeAssist</h1>
+            <small>Prototipo Sprint 1</small>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html" class="active">Dashboard</a
+          ><a href="registro.html">Registro</a><a href="perfil.html">Perfil</a
+          ><a href="dispositivo.html">Dispositivo</a
+          ><a href="sensores.html">Sensores</a
+          ><a href="temperatura.html">Temperatura</a
+          ><a href="index.html">Inicio de sesión</a>
+        </nav>
+        <div class="sidebar-footer">
+          Interfaz de borrador · Sin base de datos
+        </div>
+      </aside>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2>Dashboard</h2>
+            <p>Panel principal del prototipo HomeAssist</p>
+          </div>
+          <span class="pill" id="sessionUser">Demo</span>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="muted">Sistema</div>
+            <div class="metric" style="font-size: 22px">HomeAssist</div>
+            <span class="status ok"><span class="dot"></span> Operativo</span>
+          </div>
+          <div class="card">
+            <div class="muted">Dispositivo</div>
+            <div class="metric" style="font-size: 22px">ESP32</div>
+            <span class="status ok"><span class="dot"></span> Conectado</span>
+          </div>
+          <div class="card">
+            <div class="muted">Temperatura</div>
+            <div class="metric">24.3 °C</div>
+            <a href="temperatura.html" class="muted">Ver monitoreo →</a>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top: 20px">
+          <div class="card">
+            <h3>Accesos rápidos del Sprint 1</h3>
+            <div class="actions">
+              <a class="btn btn-secondary" href="perfil.html"
+                >Gestionar perfil</a
+              ><a class="btn btn-secondary" href="dispositivo.html"
+                >Registrar dispositivo</a
+              ><a class="btn btn-secondary" href="sensores.html"
+                >Configurar sensores</a
+              ><a class="btn btn-secondary" href="temperatura.html"
+                >Ver temperatura</a
+              >
+            </div>
+          </div>
+          <div class="card">
+            <h3>Resumen del prototipo</h3>
+            <p>
+              Este dashboard funciona como destino después del inicio de sesión
+              y concentra las vistas del Sprint 1.
+            </p>
+            <div class="alert">
+              No existe conexión real con ESP32 ni base de datos. Los datos son
+              demostrativos.
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

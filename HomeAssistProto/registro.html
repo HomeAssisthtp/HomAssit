@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Registro de usuario | HomeAssist</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">HA</div>
+          <div>
+            <h1>HomeAssist</h1>
+            <small>Prototipo Sprint 1</small>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Dashboard</a
+          ><a href="registro.html" class="active">Registro</a
+          ><a href="perfil.html">Perfil</a
+          ><a href="dispositivo.html">Dispositivo</a
+          ><a href="sensores.html">Sensores</a
+          ><a href="temperatura.html">Temperatura</a
+          ><a href="index.html">Inicio de sesión</a>
+        </nav>
+        <div class="sidebar-footer">
+          Interfaz de borrador · Sin base de datos
+        </div>
+      </aside>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2>Registro de usuario</h2>
+            <p>HU-01 · Crear una cuenta en HomeAssist</p>
+          </div>
+          <span class="pill" id="sessionUser">Demo</span>
+        </div>
+        <div class="card">
+          <h3>HU-01 · Registro de usuario</h3>
+          <p>
+            Formulario de creación de cuenta con campos obligatorios y
+            validaciones básicas.
+          </p>
+          <form class="form-grid" onsubmit="registerUser(event)">
+            <div class="field full">
+              <label>Nombre completo *</label><input id="regName" required />
+            </div>
+            <div class="field">
+              <label>Correo electrónico *</label
+              ><input id="regEmail" type="email" required />
+            </div>
+            <div class="field">
+              <label>Teléfono</label><input placeholder="55 0000 0000" />
+            </div>
+            <div class="field">
+              <label>Contraseña *</label
+              ><input id="regPass" type="password" required />
+            </div>
+            <div class="field">
+              <label>Confirmar contraseña *</label
+              ><input id="regPass2" type="password" required />
+            </div>
+            <div class="field full">
+              <label>Tipo de usuario</label
+              ><select>
+                <option>Usuario principal</option>
+                <option>Contacto autorizado</option>
+              </select>
+            </div>
+            <div class="field full">
+              <div id="registerError" class="error"></div>
+              <div id="registerSuccess" class="success"></div>
+              <div class="actions">
+                <button class="btn btn-primary">Crear cuenta</button
+                ><a class="btn btn-secondary" href="index.html">Volver</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

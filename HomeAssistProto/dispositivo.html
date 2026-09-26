@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Registro del dispositivo | HomeAssist</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">HA</div>
+          <div>
+            <h1>HomeAssist</h1>
+            <small>Prototipo Sprint 1</small>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Dashboard</a
+          ><a href="registro.html">Registro</a><a href="perfil.html">Perfil</a
+          ><a href="dispositivo.html" class="active">Dispositivo</a
+          ><a href="sensores.html">Sensores</a
+          ><a href="temperatura.html">Temperatura</a
+          ><a href="index.html">Inicio de sesión</a>
+        </nav>
+        <div class="sidebar-footer">
+          Interfaz de borrador · Sin base de datos
+        </div>
+      </aside>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2>Registro del dispositivo</h2>
+            <p>HU-04 · Asociar un ESP32 a la cuenta del usuario</p>
+          </div>
+          <span class="pill" id="sessionUser">Demo</span>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>HU-04 · Registrar nuevo dispositivo</h3>
+            <p>Asocia un ESP32 mediante un identificador único.</p>
+            <form class="form-grid" onsubmit="registerDevice(event)">
+              <div class="field full">
+                <label>Identificador único *</label
+                ><input id="deviceCode" placeholder="HA-ESP32-0001" required />
+              </div>
+              <div class="field full">
+                <label>Nombre / alias *</label
+                ><input
+                  id="deviceAlias"
+                  placeholder="HomeAssist Sala"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label>Modelo</label
+                ><select>
+                  <option>ESP32 DevKit V1</option>
+                  <option>ESP32-WROOM-32</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Habitación principal</label
+                ><select>
+                  <option>Sala</option>
+                  <option>Recámara</option>
+                  <option>Cocina</option>
+                  <option>Entrada</option>
+                </select>
+              </div>
+              <div class="field full">
+                <div id="deviceError" class="error"></div>
+                <div id="deviceSuccess" class="success"></div>
+                <button class="btn btn-primary">Asociar dispositivo</button>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <h3>Estado del dispositivo</h3>
+            <p id="deviceSummary">HomeAssist principal · HA-ESP32-DEMO</p>
+            <span id="connectionStatus" class="status off"
+              ><span class="dot"></span> Desconectado</span
+            >
+            <p class="muted" style="margin-top: 18px">Endpoint previsto:</p>
+            <div class="code-box">
+              POST /api/devices/associate { "device_uid": "HA-ESP32-0001",
+              "user_id": "&lt;usuario_autenticado&gt;", "alias": "HomeAssist
+              Sala" }
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

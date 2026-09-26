@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Configuración de sensores | HomeAssist</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">HA</div>
+          <div>
+            <h1>HomeAssist</h1>
+            <small>Prototipo Sprint 1</small>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Dashboard</a
+          ><a href="registro.html">Registro</a><a href="perfil.html">Perfil</a
+          ><a href="dispositivo.html">Dispositivo</a
+          ><a href="sensores.html" class="active">Sensores</a
+          ><a href="temperatura.html">Temperatura</a
+          ><a href="index.html">Inicio de sesión</a>
+        </nav>
+        <div class="sidebar-footer">
+          Interfaz de borrador · Sin base de datos
+        </div>
+      </aside>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2>Configuración de sensores</h2>
+            <p>HU-05 · Registrar sensores, dispositivo y habitación</p>
+          </div>
+          <span class="pill" id="sessionUser">Demo</span>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>HU-05 · Configuración de sensores</h3>
+            <form class="form-grid" onsubmit="saveSensor(event)">
+              <div class="field full">
+                <label>Tipo de sensor</label
+                ><select id="sensorType">
+                  <option>Temperatura / Humedad · DHT22</option>
+                  <option>Movimiento · PIR HC-SR501</option>
+                  <option>Puerta / Ventana · MC-38</option>
+                  <option>Humo / Gas · MQ-2</option>
+                  <option>Botón SOS</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Dispositivo</label
+                ><select id="sensorDevice">
+                  <option>HomeAssist principal</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Habitación</label
+                ><select id="sensorRoom">
+                  <option>Sala</option>
+                  <option>Recámara</option>
+                  <option>Cocina</option>
+                  <option>Entrada</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label>Nombre del sensor</label
+                ><input placeholder="Ej. Temperatura sala" />
+              </div>
+              <div class="field full">
+                <button class="btn btn-primary">Agregar sensor</button>
+                <div id="sensorSuccess" class="success"></div>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <h3>Catálogo compatible</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Sensor</th>
+                  <th>Uso</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DHT11 / DHT22</td>
+                  <td>Temperatura y humedad</td>
+                </tr>
+                <tr>
+                  <td>PIR HC-SR501</td>
+                  <td>Movimiento</td>
+                </tr>
+                <tr>
+                  <td>MC-38</td>
+                  <td>Apertura de puertas</td>
+                </tr>
+                <tr>
+                  <td>MQ-2 / MQ-135</td>
+                  <td>Humo o gas</td>
+                </tr>
+                <tr>
+                  <td>Botón SOS</td>
+                  <td>Emergencia manual</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 20px">
+          <h3>Sensores configurados</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Sensor</th>
+                <th>Habitación</th>
+                <th>Dispositivo</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="sensorRows">
+              <tr>
+                <td>Temperatura / Humedad · DHT22</td>
+                <td>Sala</td>
+                <td>HomeAssist principal</td>
+                <td>
+                  <span class="status ok"
+                    ><span class="dot"></span> Configurado</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

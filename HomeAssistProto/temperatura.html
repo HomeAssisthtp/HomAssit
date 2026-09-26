@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Monitoreo de temperatura | HomeAssist</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">HA</div>
+          <div>
+            <h1>HomeAssist</h1>
+            <small>Prototipo Sprint 1</small>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Dashboard</a
+          ><a href="registro.html">Registro</a><a href="perfil.html">Perfil</a
+          ><a href="dispositivo.html">Dispositivo</a
+          ><a href="sensores.html">Sensores</a
+          ><a href="temperatura.html" class="active">Temperatura</a
+          ><a href="index.html">Inicio de sesión</a>
+        </nav>
+        <div class="sidebar-footer">
+          Interfaz de borrador · Sin base de datos
+        </div>
+      </aside>
+      <main class="content">
+        <div class="topbar">
+          <div>
+            <h2>Monitoreo de temperatura</h2>
+            <p>HU-06 · Lecturas del sensor y visualización actual</p>
+          </div>
+          <span class="pill" id="sessionUser">Demo</span>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="muted">Temperatura actual</div>
+            <div id="tempValue" class="metric">24.3 °C</div>
+            <div class="temp-gauge">
+              <div class="temp-marker" id="tempMarker"></div>
+            </div>
+            <div class="muted" style="margin-top: 14px">
+              Última lectura: <span id="tempTime">Ahora</span>
+            </div>
+            <div class="actions">
+              <button class="btn btn-primary" onclick="updateTemperature()">
+                Simular nueva lectura
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="muted">Sensor</div>
+            <div class="metric" style="font-size: 22px">DHT22</div>
+            <p>Sensor relacionado: TEMP-SALA-01</p>
+            <span class="status ok"><span class="dot"></span> Activo</span>
+          </div>
+          <div class="card">
+            <div class="muted">ESP32</div>
+            <div class="metric" style="font-size: 22px">HA-ESP32-0001</div>
+            <p>Comunicación simulada vía Wi-Fi.</p>
+            <span class="status ok"><span class="dot"></span> Conectado</span>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top: 20px">
+          <div class="card">
+            <h3>HU-06 · Flujo previsto</h3>
+            <p>
+              ESP32 → lectura del DHT22 → envío al servidor → almacenamiento con
+              fecha/hora → consulta del dashboard.
+            </p>
+            <div class="code-box">
+              POST /api/readings/temperature { "device_uid": "HA-ESP32-0001",
+              "sensor_id": "TEMP-SALA-01", "temperature": 24.3, "recorded_at":
+              "YYYY-MM-DD HH:mm:ss" }
+            </div>
+          </div>
+          <div class="card">
+            <h3>Historial de ejemplo</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Hora</th>
+                  <th>Temperatura</th>
+                  <th>Sensor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>21:50</td>
+                  <td>24.3 °C</td>
+                  <td>TEMP-SALA-01</td>
+                </tr>
+                <tr>
+                  <td>21:45</td>
+                  <td>24.1 °C</td>
+                  <td>TEMP-SALA-01</td>
+                </tr>
+                <tr>
+                  <td>21:40</td>
+                  <td>23.9 °C</td>
+                  <td>TEMP-SALA-01</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
