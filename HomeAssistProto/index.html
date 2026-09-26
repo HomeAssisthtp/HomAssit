@@ -1,1 +1,61 @@
-
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Inicio de sesión | HomeAssist</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="login-page">
+    <div class="auth-shell">
+      <section class="auth-hero">
+        <div class="brand-badge">HA</div>
+        <h1>HomeAssist</h1>
+        <p>
+          Plataforma web con integración IoT orientada al monitoreo, seguridad y
+          asistencia inteligente del hogar.
+        </p>
+        <p style="margin-top: 28px">
+          <strong>Sprint 1 · Borrador funcional</strong><br />Las pantallas
+          simulan el flujo principal sin utilizar base de datos.
+        </p>
+      </section>
+      <section class="auth-form">
+        <h2>Iniciar sesión</h2>
+        <p class="muted">
+          Ingresa con las credenciales del prototipo para acceder al dashboard.
+        </p>
+        <form onsubmit="login(event)">
+          <div class="field">
+            <label>Correo electrónico</label
+            ><input
+              id="email"
+              type="email"
+              placeholder="correo@ejemplo.com"
+              required
+            />
+          </div>
+          <div class="field" style="margin-top: 14px">
+            <label>Contraseña</label
+            ><input
+              id="password"
+              type="password"
+              placeholder="Contraseña"
+              required
+            />
+          </div>
+          <div id="loginError" class="error"></div>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Iniciar sesión</button
+            ><a class="btn btn-secondary" href="registro.html">Crear cuenta</a>
+          </div>
+        </form>
+        <div class="credentials">
+          <strong>Borrador / cuenta de prueba</strong><br />Usuario:
+          <b>demo@homeassist.mx</b><br />Contraseña: <b>HomeAssist123</b>
+        </div>
+      </section>
+    </div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
