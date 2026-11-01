@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+
+  --bg: #060a13;
+  --bg-deep: #03060c;
+  --night: #0a1222;
+  --carbon: #111827;
+
+  --ink: #e8eef8;
+  --ink-muted: #9aa8bf;
+  --ink-subtle: #66758e;
+
+  --accent: #4fd1e8;
+  --accent-strong: #22b8d6;
+  --electric: #5b8cff;
+
+  --ok: #3ddc97;
+  --warn: #f5b942;
+  --danger: #ff5d6c;
+  --offline: #7b8699;
+
+  --line: rgb(255 255 255 / 0.08);
+  --line-strong: rgb(255 255 255 / 0.14);
+
+  --glass-1: rgb(148 170 210 / 0.055);
+  --glass-2: rgb(148 170 210 / 0.085);
+  --glass-3: rgb(160 185 225 / 0.12);
+
+  --shadow-float: 0 1px 0 0 rgb(255 255 255 / 0.05) inset, 0 20px 50px -24px rgb(0 0 0 / 0.7),
+    0 8px 20px -12px rgb(0 0 0 / 0.5);
+  --shadow-lift: 0 1px 0 0 rgb(255 255 255 / 0.07) inset, 0 30px 70px -28px rgb(0 0 0 / 0.8),
+    0 12px 28px -14px rgb(0 0 0 / 0.55);
+
+  --shadow-hover: 0 1px 0 0 rgb(255 255 255 / 0.1) inset, 0 50px 90px -30px rgb(0 0 0 / 0.9),
+    0 24px 40px -18px rgb(0 0 0 / 0.6), 0 0 60px -20px rgb(79 209 232 / 0.25);
+
+  --radius: 1.25rem;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-night: var(--night);
+  --color-carbon: var(--carbon);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-electric: var(--electric);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-offline: var(--offline);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-glass: var(--radius);
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-alert-in: alert-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  --animate-breathe: breathe 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-value: value-in 0.4s ease-out both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px) scale(0.99); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes alert-in {
+    from { opacity: 0; transform: translateY(-8px) scale(0.98); filter: blur(4px); }
+    to   { opacity: 1; transform: none; filter: none; }
+  }
+  @keyframes pulse-ring {
+    0%   { transform: scale(0.8); opacity: 0.7; }
+    80%, 100% { transform: scale(2.4); opacity: 0; }
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50%      { transform: scale(1.06); opacity: 1; }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to   { background-position: 200% 0; }
+  }
+  @keyframes modal-in {
+    from { opacity: 0; transform: scale(0.94) translateY(12px); filter: blur(6px); }
+    to   { opacity: 1; transform: none; filter: none; }
+  }
+  @keyframes drawer-in {
+    from { opacity: 0; transform: translateX(-24px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes value-in {
+    from { opacity: 0.2; transform: translateY(3px); }
+    to   { opacity: 1; transform: none; }
+  }
+  /* Spatial UI: usan translate/scale (no transform) para componerse con la inclinación 3D */
+  @keyframes depth-in {
+    from { opacity: 0; scale: 0.9; translate: 0 26px; filter: blur(8px); }
+    to   { opacity: 1; scale: 1; translate: 0 0; filter: none; }
+  }
+  /* Flotación de tarjetas con texto: avanza en píxeles enteros para no desenfocar las letras */
+  @keyframes float {
+    0%   { translate: 0 0; animation-timing-function: steps(6, jump-end); }
+    50%  { translate: 0 -6px; animation-timing-function: steps(6, jump-end); }
+    100% { translate: 0 0; }
+  }
+  /* Flotación suave para piezas sin texto (indicadores, iconos) */
+  @keyframes float-smooth {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 var(--float-y, -7px); }
+  }
+  @keyframes orb-drift {
+    0%, 100% { translate: 0 0; scale: 1; }
+    33%      { translate: 4vw -3vh; scale: 1.08; }
+    66%      { translate: -3vw 4vh; scale: 0.95; }
+  }
+  @keyframes grid-flow {
+    from { background-position: 0 0; }
+    to   { background-position: 0 64px; }
+  }
+  @keyframes ring-spin {
+    to { rotate: 360deg; }
+  }
+}
+
+
+/* El fondo va solo en html: si body tuviera fondo, taparía la capa ambiental (z negativo). */
+html {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  min-height: 100dvh;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: rgb(79 209 232 / 0.3); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 0.6rem;
+}
+
+/* Scrollbars discretas */
+* { scrollbar-width: thin; scrollbar-color: rgb(255 255 255 / 0.12) transparent; }
+
+
+@utility ambient-bg {
+  background:
+    radial-gradient(60rem 40rem at 12% -10%, rgb(79 209 232 / 0.10), transparent 60%),
+    radial-gradient(50rem 36rem at 105% 10%, rgb(91 140 255 / 0.10), transparent 60%),
+    radial-gradient(40rem 30rem at 50% 120%, rgb(61 220 151 / 0.05), transparent 60%),
+    linear-gradient(180deg, var(--night) 0%, var(--bg) 45%, var(--bg-deep) 100%);
+}
+
+@utility grid-overlay {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 70%);
+}
+
+
+@utility glass {
+  background: linear-gradient(180deg, var(--glass-2), var(--glass-1));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-float);
+  --glass-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+}
+
+@utility glass-strong {
+  background: linear-gradient(180deg, var(--glass-3), var(--glass-1));
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-lift);
+  --glass-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+}
+
+@utility glass-subtle {
+  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(255 255 255 / 0.06);
+}
+
+@utility sheen {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.07), transparent 38%);
+    z-index: -1;
+  }
+}
+
+@utility skeleton {
+  background: linear-gradient(90deg, rgb(255 255 255 / 0.04) 0%, rgb(255 255 255 / 0.09) 50%, rgb(255 255 255 / 0.04) 100%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+  border-radius: 0.75rem;
+}
+
+@utility tabular { font-variant-numeric: tabular-nums; }
+
+/* ---------- Spatial UI ---------- */
+
+/* Superficie que se inclina en 3D hacia el cursor (variables puestas por <Tilt3D>) */
+@utility tilt3d {
+  position: relative;
+  /* En reposo no hay transformación: el texto se dibuja nítido, sin re-muestreo. */
+  transform: perspective(var(--tilt-perspective, 1100px)) rotateX(0deg) rotateY(0deg) translateZ(0px);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  &:not([data-tilting]) { transform: none; }
+  &[data-tilting] {
+    transform: perspective(var(--tilt-perspective, 1100px)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
+      translateZ(var(--tz, 0px));
+    transition: transform 0.12s ease-out;
+  }
+  &[data-tilting] { --pop: 1; }
+  &[data-tilting] > .tilt3d-glare { opacity: 1; }
+  &[data-tilting] > .tilt3d-surface { box-shadow: var(--shadow-hover); border-color: var(--line-strong); }
+}
+
+/* Capas de profundidad: planas (nítidas) en reposo; se separan al inclinar la superficie */
+@utility pop-1 {
+  transform: translateZ(calc(var(--pop, 0) * 14px));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@utility pop-2 {
+  transform: translateZ(calc(var(--pop, 0) * 28px));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@utility pop-3 {
+  transform: translateZ(calc(var(--pop, 0) * 44px));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Reflejo especular que sigue al cursor */
+@utility tilt3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(22rem circle at var(--mx, 50%) var(--my, 0%), rgb(255 255 255 / 0.09), transparent 55%);
+}
+
+/* Fondo de vidrio como capa hermana: el contenido conserva profundidad 3D real */
+@utility tilt3d-surface {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  overflow: hidden;
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.07), transparent 38%);
+  }
+}
+
+/* Entrada desde la profundidad, escalonada con --enter-delay */
+@utility spatial-enter {
+  animation: depth-in 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+/* Entrada + flotación continua (se pausa al interactuar) */
+@utility spatial-float {
+  animation:
+    depth-in 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both,
+    float var(--float-duration, 8s) linear infinite;
+  animation-delay: var(--enter-delay, 0ms), calc(var(--enter-delay, 0ms) + 0.75s);
+  &:hover, &:focus-within { animation-play-state: running, paused; }
+}
+
+@utility float-idle {
+  animation: float-smooth var(--float-duration, 7s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+
+/* Los hijos directos entran desde la profundidad, uno tras otro */
+@utility spatial-stagger {
+  & > * {
+    animation: depth-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  & > *:nth-child(2) { animation-delay: 80ms; }
+  & > *:nth-child(3) { animation-delay: 160ms; }
+  & > *:nth-child(4) { animation-delay: 240ms; }
+  & > *:nth-child(5) { animation-delay: 320ms; }
+  & > *:nth-child(n + 6) { animation-delay: 400ms; }
+}
+
+/* Piso en perspectiva del fondo */
+@utility space-floor {
+  background-image:
+    linear-gradient(rgb(120 190 255 / 0.2) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgb(120 190 255 / 0.2) 1.5px, transparent 1.5px);
+  background-size: 64px 64px;
+  transform: perspective(700px) rotateX(64deg);
+  transform-origin: 50% 100%;
+  mask-image: linear-gradient(to top, rgb(0 0 0 / 0.9) 0%, rgb(0 0 0 / 0.45) 30%, transparent 62%);
+  animation: grid-flow 9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
